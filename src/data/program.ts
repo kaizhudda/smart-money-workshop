@@ -51,16 +51,20 @@ export const offer = {
    */
   priceNote: 'Introductory price while the program is new',
 
-  // ⚠️ TODO — real cohort details.
+  // ⚠️ TODO — real cohort dates.
   startDate: 'TODO_START_DATE', // e.g. 'Tuesday 2 September'
   sessionTime: 'TODO_TIME', // e.g. '5:00pm AEST, every Tuesday'
-  spotsTotal: 'TODO_SPOTS', // e.g. 10
 
-  // ⚠️ TODO — confirm this is the current form (the one in your marketing
-  // docs was for the FREE pilot cohort). Must be the /viewform?embedded=true
-  // version for the embed to work — see README.
-  formUrl: 'https://forms.gle/mD9zH4gD3sf2EV4YA',
-  formEmbedUrl: 'TODO_FORM_EMBED_URL',
+  // Real cohort cap. Drives the scarcity messaging — keep it honest.
+  spotsTotal: 5,
+
+  formUrl:
+    'https://docs.google.com/forms/d/e/1FAIpQLSd5o3oU_5Y2P99OSdcwYciMfUBp30acxqWlqBB00pKsVWiVlQ/viewform',
+  formEmbedUrl:
+    'https://docs.google.com/forms/d/e/1FAIpQLSd5o3oU_5Y2P99OSdcwYciMfUBp30acxqWlqBB00pKsVWiVlQ/viewform?embedded=true',
+  // Height Google suggests for this form. Too short crops the last question;
+  // too tall leaves dead space. Re-check if you add or remove questions.
+  formEmbedHeight: 2609,
 };
 
 /* ---------------------------------------------------------------------------

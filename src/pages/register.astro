@@ -17,11 +17,20 @@ const hasEmbed = !isTodo(offer.formEmbedUrl);
       <h1 class="font-display text-3xl font-bold sm:text-5xl">
         Register your child
       </h1>
-      <p class="mt-5 text-lg leading-relaxed text-ink-700">
-        This is a registration of interest — not a booking and not a payment.
-        It doesn’t hold a spot and it doesn’t commit you to attending. I read
-        every registration myself and get in touch to talk it through before
-        anything is confirmed. You keep the full materials pack either way.
+      <p
+        class="mb-5 inline-flex items-center gap-2 rounded-full bg-flame-500/10 px-3.5 py-1.5 text-sm font-bold text-flame-600"
+      >
+        <span
+          class="inline-block h-1.5 w-1.5 rounded-full bg-flame-500"
+          aria-hidden="true"></span>
+        Only {offer.spotsTotal} spots in this cohort
+      </p>
+
+      <p class="text-lg leading-relaxed text-ink-700">
+        This is a registration of interest — not a booking and not a payment. It
+        doesn’t hold a spot and it doesn’t commit you to attending. I read every
+        registration myself and get in touch to talk it through before anything
+        is confirmed. You keep the full materials pack either way.
       </p>
     </div>
   </section>
@@ -40,7 +49,7 @@ const hasEmbed = !isTodo(offer.formEmbedUrl);
             d: 'Every worksheet and challenge pack, free, whether or not a spot opens up.',
           },
           {
-            t: 'I get in touch personally',
+            t: 'I get in touch within 48 hours',
             d: 'I’ll email or call to confirm whether there’s a place in the next cohort, and answer anything you want to ask.',
           },
           {
@@ -69,7 +78,7 @@ const hasEmbed = !isTodo(offer.formEmbedUrl);
             src={offer.formEmbedUrl}
             title="Smart Money Workshop registration form"
             width="100%"
-            height="1200"
+            height={offer.formEmbedHeight}
             frameborder="0"
             marginheight="0"
             marginwidth="0"

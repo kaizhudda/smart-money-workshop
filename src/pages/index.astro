@@ -1,8 +1,10 @@
 ---
+import fs from 'node:fs';
 import Layout from '../layouts/Layout.astro';
 import Cta from '../components/Cta.astro';
 import StickyCta from '../components/StickyCta.astro';
 import Todo from '../components/Todo.astro';
+import { url } from '../lib/url';
 import {
   offer,
   proof,
@@ -15,6 +17,11 @@ import {
 } from '../data/program';
 
 const isTodo = (v: unknown) => typeof v === 'string' && v.startsWith('TODO');
+
+// Show the real founder photo the moment the file exists, and keep the
+// placeholder visible until then — so a missing image is never a broken one.
+const photoFile = new URL('../../public/kaiz.jpg', import.meta.url);
+const hasPhoto = fs.existsSync(photoFile);
 
 // Keep the testimonial grid looking deliberate whether there are two quotes
 // or three — adding a real third one needs no layout change.
@@ -189,6 +196,17 @@ const testimonialCols =
       </div>
 
       <div class="mt-8 rounded-3xl bg-cream-100 p-6 text-center text-ink-700 sm:p-8">
+        {/* Real cap, not manufactured urgency — small cohorts are the reason
+            the sessions work at all. */}
+        <p
+          class="mb-3 inline-flex items-center gap-2 rounded-full bg-flame-500/10 px-3.5 py-1.5 text-sm font-bold text-flame-600"
+        >
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-flame-500"
+            aria-hidden="true"></span>
+          Only {offer.spotsTotal} spots in this cohort
+        </p>
+
         <p class="text-xs font-bold tracking-widest text-ink-400 uppercase">
           Your price for the next cohort
         </p>
@@ -280,12 +298,24 @@ const testimonialCols =
       class="mt-10 flex flex-col gap-5 rounded-3xl bg-cream-200/70 p-6 sm:flex-row sm:items-center sm:p-8"
     >
       <div class="shrink-0">
-        {/* TODO: replace with a real photo of Kaiz — see README step 5 */}
-        <div
-          class="grid h-20 w-20 place-items-center rounded-2xl border-2 border-dashed border-flame-500 bg-flame-500/10 text-center text-[0.55rem] leading-tight font-bold tracking-wide text-flame-600 uppercase"
-        >
-          ⚠ Photo<br />of Kaiz
-        </div>
+        {
+          hasPhoto ? (
+            <img
+              src={url('/kaiz.jpg')}
+              alt="Kaiz Hudda"
+              width="96"
+              height="96"
+              loading="lazy"
+              class="h-24 w-24 rounded-2xl object-cover shadow-md ring-1 ring-ink-900/10"
+            />
+          ) : (
+            <div class="grid h-20 w-20 place-items-center rounded-2xl border-2 border-dashed border-flame-500 bg-flame-500/10 text-center text-[0.55rem] leading-tight font-bold tracking-wide text-flame-600 uppercase">
+              ⚠ Save photo to
+              <br />
+              public/kaiz.jpg
+            </div>
+          )
+        }
       </div>
 
       <div class="min-w-0">
@@ -347,10 +377,10 @@ const testimonialCols =
         Four weeks. One habit that lasts.
       </h2>
       <p class="mt-4 leading-relaxed text-ink-700">
-        Registering costs nothing and commits you to nothing. It puts your
-        child’s name down — then I get in touch personally to talk it through
-        and let you know if a spot’s available. You keep the full materials pack
-        either way.
+        There are {offer.spotsTotal} spots in this cohort. Registering costs
+        nothing and commits you to nothing — it puts your child’s name down, then
+        I get in touch personally to talk it through and let you know if one of
+        them is yours. You keep the full materials pack either way.
       </p>
       <div class="mt-7">
         <Cta />
