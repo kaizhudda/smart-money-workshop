@@ -38,6 +38,10 @@ export const offer = {
   sessionCount: 4,
   sessionMinutes: 60,
   platform: 'Google Hangouts',
+  // Short form for tight spaces (stat tiles). Keep the full name everywhere
+  // else — this exists purely so a long platform name doesn't wrap and
+  // break the rhythm of a 4-up tile grid.
+  platformShort: 'Hangouts',
 
   // Price for the next cohort, in AUD. See README for the reasoning behind
   // this number — change it here and it updates everywhere.

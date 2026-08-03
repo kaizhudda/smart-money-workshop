@@ -22,9 +22,9 @@ const [emailUser, emailDomain] = site.email.split('@');
         <p class="font-semibold text-ink-900">Questions?</p>
         <!-- Footer only, deliberately not a call-to-action. Assembled in JS so
              it isn't sitting in the static HTML for scrapers to harvest. -->
-        <p class="mt-2 text-ink-500">
+        <p class="mt-1 text-ink-500">
           <a
-            class="underline decoration-gold-500 decoration-2 underline-offset-4 transition hover:text-flame-600"
+            class="-mx-1 inline-block px-1 py-2.5 underline decoration-gold-500 decoration-2 underline-offset-4 transition hover:text-flame-600"
             data-email-user={emailUser}
             data-email-domain={emailDomain}
             href="#"
@@ -32,10 +32,10 @@ const [emailUser, emailDomain] = site.email.split('@');
             Email {site.founder.split(' ')[0]}
           </a>
         </p>
-        <p class="mt-4">
+        <p class="mt-2">
           <a
             href={url('/register')}
-            class="font-semibold text-flame-600 underline decoration-2 underline-offset-4"
+            class="-mx-1 inline-block px-1 py-2.5 font-semibold text-flame-600 underline decoration-2 underline-offset-4"
           >
             Register your child →
           </a>

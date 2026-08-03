@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
+/* Self-hosted variable fonts — no third-party request, no flash of a
+   fallback font while a CDN responds, works identically offline. */
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/fraunces/wght.css';
+
 /* ===========================================================================
    Smart Money Workshop — design tokens
    Palette lifted from the existing Welcome Pack cover art so the site and the
@@ -16,7 +21,7 @@
   --color-ink-900: #2e1f0d; /* headings */
   --color-ink-700: #4a3418; /* body text */
   --color-ink-500: #6b5333; /* muted text */
-  --color-ink-400: #8a7250;
+  --color-ink-400: #7d6548; /* AA-contrast tertiary text — 5.2:1 on cream-100 */
 
   /* Brand gold — the cover background */
   --color-gold-300: #fbd97a;
@@ -24,20 +29,30 @@
   --color-gold-500: #f0b429;
   --color-gold-600: #d69613;
 
-  /* Action orange — CTAs */
+  /* Action orange — CTAs. -600 is the button fill (AA-contrast with white
+     text, 4.6:1); -500 stays for accents, borders and small dots, which
+     carry no text-contrast requirement of their own. */
   --color-flame-400: #f4783c;
   --color-flame-500: #e85d26;
   --color-flame-600: #cc4a17;
+  --color-flame-700: #a83e12;
 
-  /* Support colours from the illustration */
+  /* Support colours from the illustration. mint-700 is the AA-contrast
+     variant for text set on a light mint tint (4.8:1); mint-brand stays for
+     icons and backgrounds, which only need to clear the lower 3:1 bar. */
   --color-sky-brand: #2b7fc4;
   --color-mint-brand: #3e9e6b;
+  --color-mint-700: #2f7d54;
   --color-cocoa: #7a3e12;
 
-  --font-display: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+  /* Fraunces for headlines — warm and a little characterful, matching the
+     brand's illustrated materials without reading like a Word document.
+     Inter for everything else — the workhorse: crisp at small sizes, a
+     genuinely large weight range, and it self-hosts cleanly. */
+  --font-display: 'Fraunces Variable', 'Iowan Old Style', 'Georgia', serif;
   --font-sans:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial,
-    sans-serif;
+    'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Helvetica Neue', Arial, sans-serif;
 }
 
 @layer base {
