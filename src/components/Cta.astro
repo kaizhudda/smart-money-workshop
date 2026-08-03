@@ -1,0 +1,38 @@
+---
+import { url } from '../lib/url';
+
+interface Props {
+  /** Button label. Keep the verb consistent across the site. */
+  label?: string;
+  /** Supporting line under the button — reduces perceived risk at the click. */
+  note?: string | null;
+  size?: 'md' | 'lg';
+  class?: string;
+}
+
+const {
+  label = 'Register your child',
+  note = 'Free to register · Takes about 60 seconds · No payment now',
+  size = 'lg',
+  class: className = '',
+} = Astro.props;
+
+const sizes = {
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+};
+---
+
+<div class={`flex flex-col items-center gap-3 ${className}`}>
+  <a
+    href={url('/register')}
+    class={`inline-block rounded-full bg-flame-500 font-bold text-white shadow-lg shadow-flame-500/25 transition hover:-translate-y-0.5 hover:bg-flame-600 hover:shadow-xl hover:shadow-flame-500/30 active:translate-y-0 ${sizes[size]}`}
+  >
+    {label} →
+  </a>
+  {
+    note && (
+      <p class="text-center text-sm text-ink-500">{note}</p>
+    )
+  }
+</div>

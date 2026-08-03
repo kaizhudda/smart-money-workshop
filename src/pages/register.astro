@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Todo from '../components/Todo.astro';
+import { offer, valueStack, guarantee } from '../data/program';
+
+const isTodo = (v: unknown) => typeof v === 'string' && v.startsWith('TODO');
+const hasEmbed = !isTodo(offer.formEmbedUrl);
+---
+
+<Layout
+  title="Register your child — Smart Money Workshop"
+  description="Register your child for the next Smart Money Workshop cohort. Free to register, takes about 60 seconds, no payment now."
+  hideHeaderCta={true}
+>
+  <section class="bg-gradient-to-b from-gold-400 to-cream-100 px-5 py-14 sm:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h1 class="font-display text-3xl font-bold sm:text-5xl">
+        Register your child
+      </h1>
+      <p class="mt-5 text-lg leading-relaxed text-ink-700">
+        Free to register, and you get the full materials pack either way. I read
+        every registration myself and email you to confirm whether there’s a
+        place in the next cohort.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
+    {/* --- What happens next: kills the "then what?" hesitation --- */}
+    <ol class="mb-12 space-y-4">
+      {
+        [
+          {
+            t: 'You fill in the form below',
+            d: 'Your name, your child’s first name and age, and how to reach you. About 60 seconds.',
+          },
+          {
+            t: 'You get the materials pack straight away',
+            d: 'Every worksheet and challenge pack, free, whether or not a spot opens up.',
+          },
+          {
+            t: 'I get in touch personally',
+            d: 'I’ll email or call to confirm whether there’s a place in the next cohort, and answer anything you want to ask.',
+          },
+          {
+            t: 'Only then do you pay',
+            d: 'If your child has a spot and you’re happy to go ahead, I’ll send an invoice. Bank transfer. Nothing before that.',
+          },
+        ].map((s, i) => (
+          <li class="flex gap-4">
+            <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-gold-400 font-display text-sm font-bold text-cocoa">
+              {i + 1}
+            </span>
+            <div class="min-w-0 pt-0.5">
+              <p class="font-bold text-ink-900">{s.t}</p>
+              <p class="mt-1 leading-relaxed text-ink-500">{s.d}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    {/* --- The form --- */}
+    <div class="overflow-hidden rounded-3xl bg-cream-50 shadow-md ring-1 ring-ink-900/5">
+      {
+        hasEmbed ? (
+          <iframe
+            src={offer.formEmbedUrl}
+            title="Smart Money Workshop registration form"
+            width="100%"
+            height="1200"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            loading="lazy"
+            class="block w-full"
+          >
+            Loading the registration form…
+          </iframe>
+        ) : (
+          <div class="p-6 sm:p-8">
+            <Todo label="Google Form embed URL — see README step 3" />
+            <p class="mt-4 leading-relaxed text-ink-500">
+              Once you paste the embed URL into{' '}
+              <code class="rounded bg-cream-200 px-1.5 py-0.5 text-sm">
+                src/data/program.ts
+              </code>
+              , your Google Form appears here.
+            </p>
+          </div>
+        )
+      }
+    </div>
+
+    <p class="mt-5 text-center text-sm text-ink-500">
+      Form not loading?{' '}
+      <a
+        href={offer.formUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-semibold text-flame-600 underline decoration-2 underline-offset-4"
+      >
+        Open it in a new tab instead →
+      </a>
+    </p>
+
+    {/* --- Reassurance at the point of decision --- */}
+    <div class="mt-12 rounded-2xl bg-gold-400/15 p-6 sm:p-8">
+      <p class="font-display text-lg font-bold text-ink-900">
+        {guarantee.headline}
+      </p>
+      <p class="mt-3 leading-relaxed text-ink-700">{guarantee.body}</p>
+    </div>
+
+    <div class="mt-8 rounded-2xl bg-cream-200/70 p-6 sm:p-8">
+      <p class="font-bold text-ink-900">What’s in the free materials pack</p>
+      <ul class="mt-4 space-y-2.5">
+        {
+          valueStack
+            .filter((v) => !v.item.includes('live sessions'))
+            .map((v) => (
+              <li class="flex gap-2.5 text-ink-700">
+                <span class="font-bold text-mint-brand" aria-hidden="true">
+                  ✓
+                </span>
+                <span>{v.item}</span>
+              </li>
+            ))
+        }
+      </ul>
+    </div>
+  </section>
+</Layout>

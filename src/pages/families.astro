@@ -1,0 +1,111 @@
+---
+/**
+ * UNLISTED resource hub for enrolled families.
+ * Not linked from anywhere on the site — you share the URL directly.
+ * `noindex` keeps it out of Google.
+ */
+import Layout from '../layouts/Layout.astro';
+import Todo from '../components/Todo.astro';
+import { weeks, offer } from '../data/program';
+import { url } from '../lib/url';
+
+const isTodo = (v: unknown) => typeof v === 'string' && v.startsWith('TODO');
+---
+
+<Layout title="Your materials — Smart Money Workshop" hideHeaderCta={true}>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, nofollow" />
+  </Fragment>
+
+  <section class="bg-gradient-to-b from-gold-400 to-cream-100 px-5 py-14 sm:px-8">
+    <div class="mx-auto max-w-3xl">
+      <h1 class="font-display text-3xl font-bold sm:text-5xl">
+        Welcome — here’s everything you need
+      </h1>
+      <p class="mt-5 text-lg leading-relaxed text-ink-700">
+        Your child’s worksheets, the weekly conversation starters, and the Zoom
+        link. Bookmark this page — it’s where everything lives for the whole
+        {' '}{offer.sessionCount} weeks.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
+    {/* --- Session logistics --- */}
+    <div class="rounded-2xl bg-cream-50 p-6 shadow-sm ring-1 ring-ink-900/5 sm:p-8">
+      <h2 class="font-display text-xl font-bold">Joining the sessions</h2>
+      <dl class="mt-5 space-y-4">
+        <div>
+          <dt class="text-sm font-bold text-ink-400 uppercase">When</dt>
+          <dd class="mt-1 text-ink-700">
+            {
+              isTodo(offer.sessionTime) ? (
+                <Todo label="session day and time" inline />
+              ) : (
+                offer.sessionTime
+              )
+            }
+          </dd>
+        </div>
+        <div>
+          <dt class="text-sm font-bold text-ink-400 uppercase">Zoom link</dt>
+          <dd class="mt-1">
+            <Todo label="recurring Zoom link" inline />
+          </dd>
+        </div>
+      </dl>
+      <p class="mt-5 text-sm leading-relaxed text-ink-500">
+        Cameras on where you can — the sessions work far better when the kids can
+        see each other. Recordings go out after every session.
+      </p>
+    </div>
+
+    {/* --- Weekly materials --- */}
+    <h2 class="mt-14 font-display text-2xl font-bold">Materials by week</h2>
+    <div class="mt-6 space-y-4">
+      {
+        weeks.map((w) => (
+          <div class="rounded-2xl bg-cream-50 p-6 shadow-sm ring-1 ring-ink-900/5">
+            <p class="text-xs font-bold tracking-widest text-ink-400 uppercase">
+              Week {w.number}
+            </p>
+            <h3 class="mt-1 font-display text-xl font-bold">{w.title}</h3>
+            <p class="mt-2 leading-relaxed text-ink-700">{w.outcome}</p>
+
+            <div class="mt-4">
+              <Todo label={`week ${w.number} PDF — drop into /public/materials/`} />
+            </div>
+
+            <p class="mt-3 text-sm text-ink-500">
+              <span class="font-semibold text-ink-900">This week at home:</span>{' '}
+              {w.takeaway}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    {/* --- Parent guide --- */}
+    <div class="mt-14 rounded-2xl bg-gold-400/15 p-6 sm:p-8">
+      <h2 class="font-display text-xl font-bold">For you, not your child</h2>
+      <p class="mt-3 leading-relaxed text-ink-700">
+        A short set of questions to ask at dinner each week. Five minutes of
+        conversation does more than an hour of worksheets — this is the part that
+        makes it stick.
+      </p>
+      <div class="mt-4">
+        <Todo label="parent conversation-starter PDF" />
+      </div>
+    </div>
+
+    <p class="mt-12 text-center text-sm text-ink-500">
+      Something not working?{' '}
+      <a
+        href={url('/')}
+        class="font-semibold text-flame-600 underline decoration-2 underline-offset-4"
+      >
+        Back to the main site
+      </a>
+    </p>
+  </section>
+</Layout>

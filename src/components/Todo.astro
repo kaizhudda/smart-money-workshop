@@ -1,0 +1,24 @@
+---
+/**
+ * Renders an unmissable marker where real content is still needed.
+ * Impossible to publish by accident — which is the point.
+ */
+interface Props {
+  label: string;
+  inline?: boolean;
+}
+
+const { label, inline = false } = Astro.props;
+---
+
+{
+  inline ? (
+    <span class="mx-0.5 inline-block rounded border-2 border-dashed border-flame-500 bg-flame-500/10 px-2 py-0.5 align-middle text-[0.7em] font-bold tracking-wide text-flame-600 uppercase">
+      ⚠ {label}
+    </span>
+  ) : (
+    <div class="my-3 rounded-xl border-2 border-dashed border-flame-500 bg-flame-500/10 px-4 py-3 text-sm font-bold tracking-wide text-flame-600 uppercase">
+      ⚠ Needs real content — {label}
+    </div>
+  )
+}

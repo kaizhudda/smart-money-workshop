@@ -1,0 +1,59 @@
+---
+import { site } from '../data/program';
+import { url } from '../lib/url';
+
+const year = new Date().getFullYear();
+// Split so naive scrapers don't lift the address straight out of the HTML.
+const [emailUser, emailDomain] = site.email.split('@');
+---
+
+<footer class="border-t border-cream-300 bg-cream-200/60">
+  <div class="mx-auto max-w-6xl px-5 py-12 sm:px-8">
+    <div class="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+      <div class="max-w-sm">
+        <p class="font-display text-lg font-bold text-ink-900">{site.name}</p>
+        <p class="mt-2 text-sm leading-relaxed text-ink-500">
+          A live online workshop teaching kids aged 9–14 how money really works —
+          created by {site.founder}, because nobody taught him.
+        </p>
+      </div>
+
+      <div class="text-sm">
+        <p class="font-semibold text-ink-900">Questions?</p>
+        <!-- Footer only, deliberately not a call-to-action. Assembled in JS so
+             it isn't sitting in the static HTML for scrapers to harvest. -->
+        <p class="mt-2 text-ink-500">
+          <a
+            class="underline decoration-gold-500 decoration-2 underline-offset-4 transition hover:text-flame-600"
+            data-email-user={emailUser}
+            data-email-domain={emailDomain}
+            href="#"
+          >
+            Email {site.founder.split(' ')[0]}
+          </a>
+        </p>
+        <p class="mt-4">
+          <a
+            href={url('/register')}
+            class="font-semibold text-flame-600 underline decoration-2 underline-offset-4"
+          >
+            Register your child →
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-10 border-t border-cream-300 pt-6 text-xs text-ink-400">
+      © {year} {site.name}. Registering does not guarantee a place in a cohort.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-email-user]').forEach((el) => {
+    const { emailUser, emailDomain } = el.dataset;
+    if (emailUser && emailDomain) {
+      el.href = `mailto:${emailUser}@${emailDomain}`;
+    }
+  });
+</script>

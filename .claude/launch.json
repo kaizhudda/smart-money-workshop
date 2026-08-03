@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "smart-money-workshop",
+      "runtimeExecutable": "/Users/kaizhudda/.nvm/versions/node/v22.22.0/bin/node",
+      "runtimeArgs": ["./node_modules/.bin/astro", "dev", "--port", "4321"],
+      "port": 4321
+    }
+  ]
+}

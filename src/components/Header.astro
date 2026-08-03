@@ -1,0 +1,43 @@
+---
+import { site } from '../data/program';
+import { url } from '../lib/url';
+
+interface Props {
+  hideCta?: boolean;
+}
+
+const { hideCta = false } = Astro.props;
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-cream-300/70 bg-cream-100/90 backdrop-blur-md"
+>
+  <div
+    class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8"
+  >
+    <a
+      href={url('/')}
+      class="flex items-center gap-2.5 font-display text-lg font-bold text-ink-900 sm:text-xl"
+    >
+      <span
+        class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gold-400 text-lg shadow-sm"
+        aria-hidden="true"
+      >
+        💰
+      </span>
+      <span class="leading-tight">{site.name}</span>
+    </a>
+
+    {
+      !hideCta && (
+        <a
+          href={url('/register')}
+          class="shrink-0 rounded-full bg-flame-500 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-flame-500/20 transition hover:bg-flame-600 sm:px-6 sm:text-base"
+        >
+          Register
+          <span class="hidden sm:inline"> your child</span>
+        </a>
+      )
+    }
+  </div>
+</header>
