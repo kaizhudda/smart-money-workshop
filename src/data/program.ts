@@ -89,7 +89,7 @@ export const weeks = [
   {
     number: 1,
     title: 'Money Fundamentals',
-    hook: 'What money actually is, and where it comes from.',
+    hook: 'What money is, and where it comes from.',
     covers: [
       'What money is and why we need it',
       'How people earn it: jobs, chores, businesses, investing, selling things',
@@ -131,7 +131,7 @@ export const weeks = [
   {
     number: 4,
     title: 'Building Smart Habits & Earning Money',
-    hook: 'Turning it into a habit, and earning their first money.',
+    hook: 'How a money habit sticks, and how to earn a first $5+.',
     covers: [
       'What a habit is, and good vs. bad money habits',
       'How to earn a first $5+: bonus chores, selling or swapping unused things, making things to sell',
@@ -156,7 +156,7 @@ export const weeks = [
 export const valueStack = [
   {
     item: '4 live sessions with Kaiz',
-    detail: '60 minutes each, small group, camera-on, discussion not lecture',
+    detail: '60 minutes each, small group, cameras on, discussion not lecture',
     value: 360,
     freeOnRegistration: false,
   },
@@ -169,7 +169,7 @@ export const valueStack = [
   {
     item: 'Money Mindset Snapshot + Mission Cards',
     detail:
-      'Finds whether your child is a Spender, Saver, Earner or Balanced, with matching missions',
+      'Finds whether your child is a Spender, Saver, Earner, or Balanced, with matching missions',
     value: 29,
     freeOnRegistration: true,
   },
@@ -279,7 +279,7 @@ export const faqs = [
   },
   {
     q: 'Is this a lecture, or do the kids actually talk?',
-    a: 'They talk. Cameras on, small group, lots of discussion, live challenges and real examples like the price of a game they want, or the cost of the headphones they’re saving for. A kid who sits silently for four weeks hasn’t learned anything.',
+    a: 'They talk. Cameras on, small group, lots of discussion, live challenges and real examples like the price of a game they want or the cost of the headphones they’re saving for. A kid who sits silently for four weeks hasn’t learned anything.',
   },
   {
     q: 'Who is teaching it?',
