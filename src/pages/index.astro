@@ -64,7 +64,7 @@ const testimonialCols =
       <p
         class="mb-5 block rounded-full text-xs font-bold tracking-widest text-cocoa/80 uppercase sm:text-sm"
       >
-        Live on Zoom · Ages {offer.ageRange}
+        Live on {offer.platform} · Ages {offer.ageRange}
       </p>
 
       <h1 class="font-display text-4xl leading-[1.08] font-bold sm:text-6xl">
@@ -91,7 +91,7 @@ const testimonialCols =
             { n: offer.sessionCount, l: 'live sessions' },
             { n: `${offer.sessionMinutes} min`, l: 'each week' },
             { n: offer.ageRange, l: 'years old' },
-            { n: 'Zoom', l: 'from home' },
+            { n: offer.platform, l: 'from home' },
           ].map((s) => (
             <div class="rounded-xl bg-cream-50/70 px-3 py-3 shadow-sm ring-1 ring-ink-900/5">
               <dt class="font-display text-xl font-bold text-ink-900 sm:text-2xl">

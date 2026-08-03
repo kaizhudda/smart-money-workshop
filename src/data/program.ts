@@ -37,7 +37,7 @@ export const offer = {
   ageRange: '9–14',
   sessionCount: 4,
   sessionMinutes: 60,
-  platform: 'Zoom',
+  platform: 'Google Hangouts',
 
   // Price for the next cohort, in AUD. See README for the reasoning behind
   // this number — change it here and it updates everywhere.
@@ -257,7 +257,7 @@ export const faqs = [
   },
   {
     q: 'Does my child need anything to take part?',
-    a: 'A device with Zoom, somewhere quiet to sit, and something to write with. Every worksheet is emailed to you as a printable PDF before the session that uses it. Nothing needs to be bought.',
+    a: 'A device with Google Hangouts, somewhere quiet to sit, and something to write with. Every worksheet is emailed to you as a printable PDF before the session that uses it. Nothing needs to be bought.',
   },
   {
     q: 'Does registering guarantee a spot?',
