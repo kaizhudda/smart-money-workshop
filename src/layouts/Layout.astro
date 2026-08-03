@@ -34,6 +34,14 @@ const {
     <meta property="og:site_name" content={site.name} />
     <meta name="twitter:card" content="summary_large_image" />
 
+    {
+      /* Site-wide guard while the page still holds placeholder content.
+         Flip site.allowSearchEngines in src/data/program.ts to go live. */
+      !site.allowSearchEngines && (
+        <meta name="robots" content="noindex, nofollow" />
+      )
+    }
+
     <slot name="head" />
   </head>
   <body>

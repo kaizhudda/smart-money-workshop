@@ -18,6 +18,15 @@ export const site = {
   founder: 'Kaiz Hudda',
   // Set once you buy a domain. Used for social share previews.
   url: 'https://kaizhudda.github.io/smart-money-workshop',
+
+  /**
+   * Keeps the whole site out of Google while it still has placeholder content.
+   * The site is fully usable and shareable by link either way — this only
+   * stops search engines indexing a half-finished page.
+   *
+   * ⚠️ Flip to `true` once the price, testimonials and form are real.
+   */
+  allowSearchEngines: false,
 };
 
 /* ---------------------------------------------------------------------------
