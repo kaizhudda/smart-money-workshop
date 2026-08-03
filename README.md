@@ -21,12 +21,29 @@ accident.
 
 ### 1. The numbers
 
-| Field | What it is |
-| --- | --- |
-| `offer.price` | Price for the next cohort, e.g. `'$149'` |
-| `offer.startDate` | e.g. `'Tuesday 2 September'` |
-| `offer.sessionTime` | e.g. `'5:00pm AEST, every Tuesday'` |
-| `offer.spotsTotal` | How many places you're actually opening |
+| Field | What it is | Status |
+| --- | --- | --- |
+| `offer.price` | Price for the next cohort | **Set to `$99`** |
+| `offer.priceNote` | Line under the price | Set to "Introductory price while the program is new" |
+| `offer.startDate` | e.g. `'Tuesday 2 September'` | ⚠️ still needed |
+| `offer.sessionTime` | e.g. `'5:00pm AEST, every Tuesday'` | ⚠️ still needed |
+| `offer.spotsTotal` | How many places you're actually opening | ⚠️ still needed |
+
+**Why $99:** it's a volume price, chosen deliberately to fill cohorts and
+generate referrals rather than to maximise revenue per child. Under $100 is an
+easy yes that a parent doesn't need to discuss with anyone first — about
+$25 per live session, which is less than an hour of tutoring. Against the $531
+value stack it reads as a serious discount, and it leaves clean headroom to
+climb ($149 → $199 → $249) as testimonials accumulate.
+
+**The plan is to raise it.** That's what the `priceNote` line supports — it's
+honest while it's true, and it means families who join at $99 don't feel stung
+later. Only keep that line if you actually intend to increase the price.
+
+A practical ladder: hold $99 until you have 6–8 solid testimonials, then move
+to $149 for the next cohort and mention the increase in your announcement.
+Raising a price is much easier when the people already in have a reason to
+refer — which is exactly what the Week 4 referral challenge is for.
 
 ### 2. Review the value stack
 
@@ -56,9 +73,16 @@ Also paste the plain shareable link into `offer.formUrl` — that's the
 
 ### 4. Testimonials
 
-`testimonials` — three placeholders. Replace the text with real quotes from your
-five pilot families and set `isPlaceholder: false` on each one you fill in. Any
-left as `true` keep showing the orange warning box.
+Two real ones are in — Farid (parent of Kabir) and Saniya (parent of Ashlyn).
+The grid adapts automatically, so adding a genuine third needs no layout change:
+append it to `testimonials` with `isPlaceholder: false` and it switches to three
+columns on its own.
+
+**Only ever add real quotes.** Inventing testimonials for a paid program is a
+breach of Australian Consumer Law (ACL s29(1)(e)) — the ACCC has fined
+businesses for exactly this — and it's the fastest way to lose a parent's trust
+if it's ever noticed. Two genuine quotes convert better than three where one
+rings false.
 
 ### 5. A photo of you
 

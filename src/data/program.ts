@@ -39,9 +39,17 @@ export const offer = {
   sessionMinutes: 60,
   platform: 'Zoom',
 
-  // ⚠️ TODO — real price for the next cohort, in AUD.
-  price: 'TODO_PRICE', // e.g. '$149'
-  priceIsPlaceholder: true,
+  // Price for the next cohort, in AUD. See README for the reasoning behind
+  // this number — change it here and it updates everywhere.
+  price: '$99',
+  priceIsPlaceholder: false,
+
+  /**
+   * Line under the price. Only keep this if you genuinely intend to raise the
+   * price for later cohorts — it's true today, and it stops early families
+   * feeling stung when it goes up. Set to null to hide it.
+   */
+  priceNote: 'Introductory price while the program is new',
 
   // ⚠️ TODO — real cohort details.
   startDate: 'TODO_START_DATE', // e.g. 'Tuesday 2 September'
@@ -189,29 +197,28 @@ export const guarantee = {
 /* ---------------------------------------------------------------------------
  *  TESTIMONIALS
  *
- *  ⚠️ TODO — replace with real quotes from the 5 pilot families.
- *  Placeholders render with a visible "PLACEHOLDER" badge so they can never
- *  be published by accident. Set `isPlaceholder: false` on a real one.
+ *  Real, unedited feedback from pilot families. Only ever add genuine quotes
+ *  here — inventing testimonials for a paid program is a breach of Australian
+ *  Consumer Law (ACL s29), not just a style problem.
+ *
+ *  Anything with `isPlaceholder: true` renders a visible warning instead of
+ *  publishing, so a draft can never go out by accident.
  * ------------------------------------------------------------------------ */
 
 export const testimonials = [
   {
-    quote: 'TODO — real quote from a pilot parent.',
-    author: 'Parent name',
-    context: 'Parent of a 10-year-old',
-    isPlaceholder: true,
+    quote:
+      'The workshop truly made a significant impact, and the main thing Kabir learned was the crucial distinction between “wants” and “needs.” This concept was presented in such an engaging and clear way, and he has already started applying it in his daily life. We are very grateful for the practical insights and guidance you provided.',
+    author: 'Farid',
+    context: 'Parent of Kabir',
+    isPlaceholder: false,
   },
   {
-    quote: 'TODO — real quote from a pilot parent.',
-    author: 'Parent name',
-    context: 'Parent of a 12-year-old',
-    isPlaceholder: true,
-  },
-  {
-    quote: 'TODO — real quote from a pilot parent or student.',
-    author: 'Parent name',
-    context: 'Parent of a 9-year-old',
-    isPlaceholder: true,
+    quote:
+      'Ashlyn really enjoyed the Smart Money Workshop and came away with some valuable insights that she’s already thinking about how to apply in her own life. It’s fantastic to see her engaging with financial concepts in such a practical and empowering way. I highly recommend your workshops to all kids — it’s such an important foundation to build early on.',
+    author: 'Saniya',
+    context: 'Parent of Ashlyn',
+    isPlaceholder: false,
   },
 ];
 

@@ -9,9 +9,10 @@ interface Props {
 const { hideCta = false } = Astro.props;
 ---
 
-<header
-  class="sticky top-0 z-40 border-b border-cream-300/70 bg-cream-100/90 backdrop-blur-md"
->
+{/* Deliberately not sticky — the sticky CTA bar at the bottom carries the
+    ask once the reader scrolls, so a second fixed element would just eat
+    vertical space on mobile. */}
+<header class="border-b border-cream-300/70 bg-cream-100">
   <div
     class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8"
   >
