@@ -209,9 +209,11 @@ export const freePacksValue = freePacks.reduce((sum, i) => sum + i.value, 0);
  * ------------------------------------------------------------------------ */
 
 export const guarantee = {
-  headline: 'Come to session one. If it’s not worth it, I’ll refund you.',
+  headline: '7-day, no-questions-asked money-back guarantee.',
   body:
-    'Sit in on the first session with your child. If you don’t think it’s worth what you paid, tell me before session two and I’ll refund you in full, and you keep every worksheet and pack. You can’t be out of pocket for trying this.',
+    'Do the whole course with your child. If you don’t think it was worth it, tell me within 7 days of the final session and I’ll refund you in full, no questions asked. You keep every worksheet and pack either way.',
+  // Short version for the price block, where space is tight.
+  short: 'Full refund up to 7 days after the course, no questions asked.',
 };
 
 /* ---------------------------------------------------------------------------
