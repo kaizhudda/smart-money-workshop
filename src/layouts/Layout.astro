@@ -8,14 +8,18 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
-  /** Hide the sticky header CTA — used on the register page itself. */
-  hideHeaderCta?: boolean;
+  /**
+   * The home page turns this off: its hero carries the brand and the CTA, and
+   * the sticky bottom bar takes over from there, so a header would only add
+   * height above the hook.
+   */
+  showHeader?: boolean;
 }
 
 const {
   title = `${site.name} | ${site.tagline}`,
   description = `A live 4-week online workshop teaching kids aged 9–14 how money really works: budgeting, saving, spending smart, and earning their first money.`,
-  hideHeaderCta = false,
+  showHeader = true,
 } = Astro.props;
 ---
 
@@ -52,7 +56,7 @@ const {
       Skip to content
     </a>
 
-    <Header hideCta={hideHeaderCta} />
+    {showHeader && <Header />}
     <main id="main">
       <slot />
     </main>

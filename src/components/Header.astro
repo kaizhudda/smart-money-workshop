@@ -1,44 +1,29 @@
 ---
+/**
+ * Slim brand bar for the sub-pages, so there's always a way back to the
+ * main page. Deliberately has no call-to-action: the home page hero and the
+ * sticky bottom bar already carry the ask, and a third button competing with
+ * them only costs vertical space.
+ *
+ * The home page skips this entirely and puts the brand inside the hero.
+ */
 import { site } from '../data/program';
 import { url } from '../lib/url';
-
-interface Props {
-  hideCta?: boolean;
-}
-
-const { hideCta = false } = Astro.props;
 ---
 
-{/* Deliberately not sticky — the sticky CTA bar at the bottom carries the
-    ask once the reader scrolls, so a second fixed element would just eat
-    vertical space on mobile. */}
 <header class="border-b border-cream-300/70 bg-cream-100">
-  <div
-    class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8"
-  >
+  <div class="mx-auto max-w-6xl px-5 py-2.5 sm:px-8">
     <a
       href={url('/')}
-      class="flex items-center gap-2 font-display text-sm font-bold whitespace-nowrap text-ink-900 sm:gap-2.5 sm:text-xl"
+      class="inline-flex items-center gap-2 font-display text-sm font-bold whitespace-nowrap text-ink-900 sm:text-base"
     >
       <span
-        class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gold-400 text-base shadow-sm sm:h-9 sm:w-9 sm:rounded-xl sm:text-lg"
+        class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gold-400 text-sm shadow-sm"
         aria-hidden="true"
       >
         💰
       </span>
       <span class="leading-tight">{site.name}</span>
     </a>
-
-    {
-      !hideCta && (
-        <a
-          href={url('/register')}
-          class="shrink-0 rounded-full bg-flame-500 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-flame-500/20 transition hover:bg-flame-600 sm:px-6 sm:text-base"
-        >
-          Register
-          <span class="hidden sm:inline"> your child</span>
-        </a>
-      )
-    }
   </div>
 </header>

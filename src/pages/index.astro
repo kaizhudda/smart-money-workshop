@@ -5,6 +5,7 @@ import Cta from '../components/Cta.astro';
 import StickyCta from '../components/StickyCta.astro';
 import Todo from '../components/Todo.astro';
 import { url } from '../lib/url';
+import { site } from '../data/program';
 import {
   offer,
   proof,
@@ -30,7 +31,7 @@ const testimonialCols =
   testimonials.length >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2';
 ---
 
-<Layout>
+<Layout showHeader={false}>
   {/* ==================================================================
       HERO — must be able to close on its own. Everything below this
       exists only for people who need more before they'll act.
@@ -45,9 +46,23 @@ const testimonialCols =
     >
     </div>
 
-    <div class="relative mx-auto max-w-4xl px-5 py-12 text-center sm:px-8 sm:py-20">
+    <div class="relative mx-auto max-w-4xl px-5 pt-6 pb-12 text-center sm:px-8 sm:pt-8 sm:pb-20">
+      {/* Brand sits inside the hero rather than in a header bar, so it costs
+          almost no height above the hook. */}
       <p
-        class="mb-5 inline-block rounded-full bg-ink-900/10 px-4 py-1.5 text-xs font-bold tracking-wide text-cocoa uppercase sm:text-sm"
+        class="mb-6 inline-flex items-center gap-2 font-display text-sm font-bold text-cocoa sm:text-base"
+      >
+        <span
+          class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-cream-50/70 text-sm shadow-sm"
+          aria-hidden="true"
+        >
+          💰
+        </span>
+        {site.name}
+      </p>
+
+      <p
+        class="mb-5 block rounded-full text-xs font-bold tracking-widest text-cocoa/80 uppercase sm:text-sm"
       >
         Live on Zoom · Ages {offer.ageRange}
       </p>
