@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Todo from '../components/Todo.astro';
-import { offer, valueStack, guarantee } from '../data/program';
+import { offer, freePacks, freePacksValue, guarantee } from '../data/program';
 
 const isTodo = (v: unknown) => typeof v === 'string' && v.startsWith('TODO');
 const hasEmbed = !isTodo(offer.formEmbedUrl);
 ---
 
 <Layout
-  title="Register your child — Smart Money Workshop"
+  title="Register your child | Smart Money Workshop"
   description="Register your child for the next Smart Money Workshop cohort. Free to register, takes about 60 seconds, no payment now."
   hideHeaderCta={true}
 >
@@ -27,10 +27,10 @@ const hasEmbed = !isTodo(offer.formEmbedUrl);
       </p>
 
       <p class="text-lg leading-relaxed text-ink-700">
-        This is a registration of interest — not a booking and not a payment. It
+        This is a registration of interest, not a booking and not a payment. It
         doesn’t hold a spot and it doesn’t commit you to attending. I read every
         registration myself and get in touch to talk it through before anything
-        is confirmed. You keep the full materials pack either way.
+        is confirmed. Either way you keep three packs worth ${freePacksValue}.
       </p>
     </div>
   </section>
@@ -45,8 +45,8 @@ const hasEmbed = !isTodo(offer.formEmbedUrl);
             d: 'Your name, your child’s first name and age, and how to reach you. About 60 seconds.',
           },
           {
-            t: 'You get the materials pack straight away',
-            d: 'Every worksheet and challenge pack, free, whether or not a spot opens up.',
+            t: `You get three packs worth $${freePacksValue}, free`,
+            d: 'Sent straight after you register, whether or not a spot opens up. They’re yours to keep either way.',
           },
           {
             t: 'I get in touch within 48 hours',
@@ -89,7 +89,7 @@ const hasEmbed = !isTodo(offer.formEmbedUrl);
           </iframe>
         ) : (
           <div class="p-6 sm:p-8">
-            <Todo label="Google Form embed URL — see README step 3" />
+            <Todo label="Google Form embed URL, see README step 3" />
             <p class="mt-4 leading-relaxed text-ink-500">
               Once you paste the embed URL into{' '}
               <code class="rounded bg-cream-200 px-1.5 py-0.5 text-sm">
@@ -123,21 +123,29 @@ const hasEmbed = !isTodo(offer.formEmbedUrl);
     </div>
 
     <div class="mt-8 rounded-2xl bg-cream-200/70 p-6 sm:p-8">
-      <p class="font-bold text-ink-900">What’s in the free materials pack</p>
+      <p class="font-bold text-ink-900">
+        What you get free, just for registering
+      </p>
       <ul class="mt-4 space-y-2.5">
         {
-          valueStack
-            .filter((v) => !v.item.includes('live sessions'))
-            .map((v) => (
-              <li class="flex gap-2.5 text-ink-700">
+          freePacks.map((v) => (
+            <li class="flex items-baseline justify-between gap-3 text-ink-700">
+              <span class="flex gap-2.5">
                 <span class="font-bold text-mint-brand" aria-hidden="true">
                   ✓
                 </span>
                 <span>{v.item}</span>
-              </li>
-            ))
+              </span>
+              <span class="shrink-0 text-sm font-bold text-ink-400">
+                ${v.value}
+              </span>
+            </li>
+          ))
         }
       </ul>
+      <p class="mt-4 border-t border-cream-300 pt-3 text-sm font-bold text-ink-900">
+        ${freePacksValue} of materials, yours whether or not your child joins.
+      </p>
     </div>
   </section>
 </Layout>

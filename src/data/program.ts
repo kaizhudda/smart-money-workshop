@@ -92,8 +92,8 @@ export const weeks = [
     hook: 'What money actually is, and where it comes from.',
     covers: [
       'What money is and why we need it',
-      'How people earn it — jobs, chores, businesses, investing, selling things',
-      'How people pay — cash, credit, debit, Apple Pay, crypto',
+      'How people earn it: jobs, chores, businesses, investing, selling things',
+      'How people pay: cash, credit, debit, Apple Pay, crypto',
       'Needs vs. wants',
     ],
     outcome:
@@ -103,7 +103,7 @@ export const weeks = [
   {
     number: 2,
     title: 'Budgeting & Saving',
-    hook: 'Where the money goes — and how to take control of it.',
+    hook: 'Where the money goes, and how to take control of it.',
     covers: [
       'What budgeting is and why it matters',
       'The needs / wants / savings framework',
@@ -119,7 +119,7 @@ export const weeks = [
     title: 'Spending Smart',
     hook: 'The four questions that stop an impulse buy.',
     covers: [
-      'The Smart Shopping Method — Pause, Compare, Wait, Choose',
+      'The Smart Shopping Method: Pause, Compare, Wait, Choose',
       'The 48-hour rule',
       'Live price comparisons on things kids actually want',
       'A real shopping challenge',
@@ -131,10 +131,10 @@ export const weeks = [
   {
     number: 4,
     title: 'Building Smart Habits & Earning Money',
-    hook: 'Turning it into a habit — and earning their first money.',
+    hook: 'Turning it into a habit, and earning their first money.',
     covers: [
       'What a habit is, and good vs. bad money habits',
-      'How to earn a first $5+ — bonus chores, selling or swapping unused things, making things to sell',
+      'How to earn a first $5+: bonus chores, selling or swapping unused things, making things to sell',
       'A referral challenge',
       'The final money challenge',
     ],
@@ -158,35 +158,51 @@ export const valueStack = [
     item: '4 live sessions with Kaiz',
     detail: '60 minutes each, small group, camera-on, discussion not lecture',
     value: 360,
+    freeOnRegistration: false,
   },
   {
     item: 'Smart Money Starter Pack',
     detail: 'The core worksheets your child works through each week',
     value: 29,
+    freeOnRegistration: true,
   },
   {
     item: 'Money Mindset Snapshot + Mission Cards',
-    detail: 'Finds whether your child is a Spender, Saver, Earner or Balanced — with matching missions',
+    detail:
+      'Finds whether your child is a Spender, Saver, Earner or Balanced, with matching missions',
     value: 29,
+    freeOnRegistration: true,
   },
   {
     item: 'Mini Hustle Challenge Pack',
-    detail: 'The real-world mission where they earn their first $5+, with planner and tracker',
+    detail:
+      'The real-world mission where they earn their first $5+, with planner and tracker',
     value: 45,
+    freeOnRegistration: true,
   },
   {
     item: 'Session recordings',
-    detail: 'Miss a week, or rewatch any session — sent after every class',
+    detail: 'Miss a week, or rewatch any session, sent after every class',
     value: 49,
+    freeOnRegistration: false,
   },
   {
     item: 'Parent conversation starters',
     detail: 'The questions to ask at dinner each week so it actually sticks',
     value: 19,
+    freeOnRegistration: false,
   },
 ];
 
 export const valueStackTotal = valueStack.reduce((sum, i) => sum + i.value, 0);
+
+/**
+ * The three packs every family gets for registering, whether or not their
+ * child ends up in a cohort. Keep this honest: only flag something here if
+ * you genuinely send it to everyone who registers.
+ */
+export const freePacks = valueStack.filter((i) => i.freeOnRegistration);
+export const freePacksValue = freePacks.reduce((sum, i) => sum + i.value, 0);
 
 /* ---------------------------------------------------------------------------
  *  GUARANTEE
@@ -195,7 +211,7 @@ export const valueStackTotal = valueStack.reduce((sum, i) => sum + i.value, 0);
 export const guarantee = {
   headline: 'Come to session one. If it’s not worth it, I’ll refund you.',
   body:
-    'Sit in on the first session with your child. If you don’t think it’s worth what you paid, tell me before session two and I’ll refund you in full — and you keep every worksheet and pack. You can’t be out of pocket for trying this.',
+    'Sit in on the first session with your child. If you don’t think it’s worth what you paid, tell me before session two and I’ll refund you in full, and you keep every worksheet and pack. You can’t be out of pocket for trying this.',
 };
 
 /* ---------------------------------------------------------------------------
@@ -219,7 +235,7 @@ export const testimonials = [
   },
   {
     quote:
-      'Ashlyn really enjoyed the Smart Money Workshop and came away with some valuable insights that she’s already thinking about how to apply in her own life. It’s fantastic to see her engaging with financial concepts in such a practical and empowering way. I highly recommend your workshops to all kids — it’s such an important foundation to build early on.',
+      'Ashlyn really enjoyed the Smart Money Workshop and came away with some valuable insights that she’s already thinking about how to apply in her own life. It’s fantastic to see her engaging with financial concepts in such a practical and empowering way. I highly recommend your workshops to all kids, it’s such an important foundation to build early on.',
     author: 'Saniya',
     context: 'Parent of Ashlyn',
     isPlaceholder: false,
@@ -245,11 +261,11 @@ export const faqs = [
   },
   {
     q: 'Does registering guarantee a spot?',
-    a: 'No — and that’s deliberate. Cohorts are kept small so every child actually gets to speak. Registering puts your child’s name down; I read every one myself and get in touch to let you know whether there’s a place in the next cohort. It costs nothing and gets you the full materials pack either way.',
+    a: 'No, and that’s deliberate. Cohorts are kept small so every child actually gets to speak. Registering puts your child’s name down. I read every one myself and get in touch to let you know whether there’s a place in the next cohort, and you get the three free packs either way.',
   },
   {
     q: 'If I register, am I committing to anything?',
-    a: 'Not at all. Registering is an expression of interest, not a booking. You’re not agreeing to pay and you’re not agreeing to attend. When I get in touch, you can ask whatever you like and say no with no awkwardness — plenty of people will, and that’s completely fine.',
+    a: 'Not at all. Registering is an expression of interest, not a booking. You’re not agreeing to pay and you’re not agreeing to attend. When I get in touch, you can ask whatever you like and say no with no awkwardness. Plenty of people will, and that’s completely fine.',
   },
   {
     q: 'How do I pay?',
@@ -261,10 +277,10 @@ export const faqs = [
   },
   {
     q: 'Is this a lecture, or do the kids actually talk?',
-    a: 'They talk. Cameras on, small group, lots of discussion, live challenges and real examples — the price of a game they want, the cost of the headphones they’re saving for. A kid who sits silently for four weeks hasn’t learned anything.',
+    a: 'They talk. Cameras on, small group, lots of discussion, live challenges and real examples like the price of a game they want, or the cost of the headphones they’re saving for. A kid who sits silently for four weeks hasn’t learned anything.',
   },
   {
     q: 'Who is teaching it?',
-    a: 'Me — Kaiz Hudda. I hosted a 52-episode podcast on money, ran webinars teaching cryptocurrency to everyday people, bought and built my own home, and built businesses in tech and retail. I built this workshop because nobody taught me any of it.',
+    a: 'Me, Kaiz Hudda. I hosted a 52-episode podcast on money, ran webinars teaching cryptocurrency to everyday people, bought and built my own home, and built businesses in tech and retail. I built this workshop because nobody taught me any of it.',
   },
 ];
