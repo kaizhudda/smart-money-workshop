@@ -4,15 +4,25 @@ import { url } from '../lib/url';
 interface Props {
   /** Button label. Keep the verb consistent across the site. */
   label?: string;
-  /** Supporting line under the button — reduces perceived risk at the click. */
+  /**
+   * Line directly under the button. Its job is to remove commitment fear —
+   * the objection here is "am I signing up to pay?", not "is this quick?".
+   */
   note?: string | null;
+  /**
+   * Second line. Sets the honest expectation: registering is an expression of
+   * interest, not a purchase and not a reserved place.
+   */
+  subnote?: string | null;
   size?: 'md' | 'lg';
   class?: string;
 }
 
 const {
   label = 'Register your child',
-  note = 'Free to register · Takes about 60 seconds · No payment now',
+  note = 'Free · No payment, no obligation',
+  subnote =
+    'This doesn’t guarantee a spot — I’ll contact you personally to confirm.',
   size = 'lg',
   class: className = '',
 } = Astro.props;
@@ -30,9 +40,15 @@ const sizes = {
   >
     {label} →
   </a>
+
   {
-    note && (
-      <p class="text-center text-sm text-ink-500">{note}</p>
+    (note || subnote) && (
+      <div class="max-w-xs text-center sm:max-w-sm">
+        {note && <p class="text-sm font-semibold text-ink-700">{note}</p>}
+        {subnote && (
+          <p class="mt-1 text-sm leading-snug text-ink-500">{subnote}</p>
+        )}
+      </div>
     )
   }
 </div>

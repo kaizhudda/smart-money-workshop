@@ -234,11 +234,15 @@ export const faqs = [
   },
   {
     q: 'Does registering guarantee a spot?',
-    a: 'No — and that’s deliberate. Cohorts are kept small so every child actually gets to speak. I read every registration myself and get in touch to confirm whether there’s a place in the next cohort. Registering costs nothing and gets you the full materials pack either way.',
+    a: 'No — and that’s deliberate. Cohorts are kept small so every child actually gets to speak. Registering puts your child’s name down; I read every one myself and get in touch to let you know whether there’s a place in the next cohort. It costs nothing and gets you the full materials pack either way.',
+  },
+  {
+    q: 'If I register, am I committing to anything?',
+    a: 'Not at all. Registering is an expression of interest, not a booking. You’re not agreeing to pay and you’re not agreeing to attend. When I get in touch, you can ask whatever you like and say no with no awkwardness — plenty of people will, and that’s completely fine.',
   },
   {
     q: 'How do I pay?',
-    a: 'You don’t pay anything to register. If your child is offered a spot, I’ll send you the details and an invoice by email. Payment is by bank transfer.',
+    a: 'You don’t pay anything to register. If your child is offered a spot and you decide to go ahead, I’ll send you the details and an invoice by email. Payment is by bank transfer, and only at that point.',
   },
   {
     q: 'What if it’s not right for my child?',
