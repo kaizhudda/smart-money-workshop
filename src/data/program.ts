@@ -173,12 +173,14 @@ export const valueStack = [
     detail: '60 minutes each, small group, cameras on, discussion not lecture',
     value: 360,
     freeOnRegistration: false,
+    icon: 'calendar' as const,
   },
   {
     item: 'Smart Money Starter Pack',
     detail: 'The core worksheets your child works through each week',
     value: 29,
     freeOnRegistration: true,
+    icon: 'document' as const,
   },
   {
     item: 'Money Mindset Snapshot + Mission Cards',
@@ -186,6 +188,7 @@ export const valueStack = [
       'Finds whether your child is a Spender, Saver, Earner, or Balanced, with matching missions',
     value: 29,
     freeOnRegistration: true,
+    icon: 'compass' as const,
   },
   {
     item: 'Mini Hustle Challenge Pack',
@@ -193,18 +196,21 @@ export const valueStack = [
       'The real-world mission where they earn their first $5+, with planner and tracker',
     value: 45,
     freeOnRegistration: true,
+    icon: 'spark' as const,
   },
   {
     item: 'Session recordings',
     detail: 'Miss a week, or rewatch any session, sent after every class',
     value: 49,
     freeOnRegistration: false,
+    icon: 'play' as const,
   },
   {
     item: 'Parent conversation starters',
     detail: 'The questions to ask at dinner each week so it actually sticks',
     value: 19,
     freeOnRegistration: false,
+    icon: 'chat' as const,
   },
 ];
 
