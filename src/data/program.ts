@@ -76,6 +76,9 @@ export const offer = {
  * ------------------------------------------------------------------------ */
 
 export const proof = {
+  // Kept for the record even though the site now says "a cohort" rather
+  // than the number — small counts read as small when stated outright.
+  // Still true, just not spelled out.
   pilotStudents: 5,
   podcastEpisodes: 52,
   podcastUrl:
