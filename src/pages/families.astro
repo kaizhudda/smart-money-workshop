@@ -6,19 +6,33 @@
  */
 import Layout from '../layouts/Layout.astro';
 import Todo from '../components/Todo.astro';
-import { weeks, offer } from '../data/program';
+import Icon from '../components/Icon.astro';
+import { weeks, offer, site } from '../data/program';
 import { url } from '../lib/url';
 
 const isTodo = (v: unknown) => typeof v === 'string' && v.startsWith('TODO');
 ---
 
-<Layout title="Your materials | Smart Money Workshop">
+<Layout showHeader={false} title="Your materials | Smart Money Workshop">
   <Fragment slot="head">
     <meta name="robots" content="noindex, nofollow" />
   </Fragment>
 
-  <section class="bg-gradient-to-b from-gold-400 to-cream-100 px-5 py-14 sm:px-8">
+  <section class="bg-gradient-to-b from-gold-400 to-cream-100 px-5 pt-6 pb-8 sm:px-8 sm:pt-8 sm:pb-10">
     <div class="mx-auto max-w-3xl">
+      {/* Brand lives in the hero, not a separate header bar, matching the
+          home page. Still links back, since this page benefits from an
+          escape hatch the home page doesn't need. */}
+      <a
+        href={url('/')}
+        class="mb-6 inline-flex items-center gap-2 font-display text-sm font-bold text-cocoa sm:text-base"
+      >
+        <span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-cream-50/70 text-cocoa shadow-sm">
+          <Icon name="coin" class="h-4 w-4" />
+        </span>
+        {site.name}
+      </a>
+
       <h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-5xl">
         Welcome. Here’s everything you need.
       </h1>
@@ -30,7 +44,7 @@ const isTodo = (v: unknown) => typeof v === 'string' && v.startsWith('TODO');
     </div>
   </section>
 
-  <section class="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
+  <section class="mx-auto max-w-3xl px-5 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-16">
     {/* --- Session logistics --- */}
     <div class="rounded-2xl bg-cream-50 p-6 shadow-sm ring-1 ring-ink-900/5 sm:p-8">
       <h2 class="font-display text-xl font-bold">Joining the sessions</h2>

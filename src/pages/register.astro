@@ -2,23 +2,38 @@
 import Layout from '../layouts/Layout.astro';
 import Todo from '../components/Todo.astro';
 import Icon from '../components/Icon.astro';
-import { offer, freePacks, freePacksValue, guarantee } from '../data/program';
+import { url } from '../lib/url';
+import { site, offer, freePacks, freePacksValue, guarantee } from '../data/program';
 
 const isTodo = (v: unknown) => typeof v === 'string' && v.startsWith('TODO');
 const hasEmbed = !isTodo(offer.formEmbedUrl);
 ---
 
 <Layout
+  showHeader={false}
   title="Register your child | Smart Money Workshop"
   description="Register your child for the next Smart Money Workshop cohort. Registering is free, the workshop itself isn't: no payment now, and no guaranteed spot until Kaiz follows up personally."
 >
-  <section class="bg-gradient-to-b from-gold-400 to-cream-100 px-5 py-14 sm:px-8">
-    <div class="mx-auto max-w-2xl text-center">
+  <section class="bg-gradient-to-b from-gold-400 to-cream-100 px-5 pt-6 pb-8 text-center sm:px-8 sm:pt-8 sm:pb-10">
+    <div class="mx-auto max-w-2xl">
+      {/* Brand lives in the hero, not a separate header bar, matching the
+          home page. Still links back, since this page benefits from an
+          escape hatch the home page doesn't need. */}
+      <a
+        href={url('/')}
+        class="mb-6 inline-flex items-center gap-2 font-display text-sm font-bold text-cocoa sm:text-base"
+      >
+        <span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-cream-50/70 text-cocoa shadow-sm">
+          <Icon name="coin" class="h-4 w-4" />
+        </span>
+        {site.name}
+      </a>
+
       <h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-5xl">
         Register your child
       </h1>
       <p
-        class="mb-5 inline-flex items-center gap-2 rounded-full bg-flame-500/10 px-3.5 py-1.5 text-sm font-bold text-flame-600"
+        class="mt-4 mb-5 inline-flex items-center gap-2 rounded-full bg-flame-500/10 px-3.5 py-1.5 text-sm font-bold text-flame-600"
       >
         <span
           class="inline-block h-1.5 w-1.5 rounded-full bg-flame-500"
@@ -35,46 +50,23 @@ const hasEmbed = !isTodo(offer.formEmbedUrl);
     </div>
   </section>
 
-  <section class="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
-    {/* --- Bonuses and risk reversal come before the form, not after.
-        Someone about to fill in their details should see the full case for
-        saying yes right up to the point of the ask, not scroll past it once
-        the ask is already behind them. --- */}
-    <div class="rounded-2xl bg-cream-50 p-6 shadow-sm ring-1 ring-ink-900/5 sm:p-8">
-      <p class="font-display text-lg font-bold text-ink-900">
-        What you get free, just for registering
+  <section class="mx-auto max-w-2xl px-5 pt-8 pb-12 sm:px-8 sm:pt-10 sm:pb-16">
+    {/* --- Bonuses and risk reversal, condensed to one glance.
+        Anyone here already saw the full pitch on the home page and clicked
+        through wanting to act — re-running the whole value stack and the
+        full guarantee paragraph again is friction, not persuasion, for
+        someone already sold. This is a reminder, not a re-sell. --- */}
+    <div class="rounded-2xl bg-cream-50 p-5 text-center shadow-sm ring-1 ring-ink-900/5 sm:p-6">
+      <p class="font-bold text-mint-700">
+        ${freePacksValue} of free materials, yours either way
       </p>
-      <ul class="mt-5 divide-y divide-cream-300/70">
-        {
-          freePacks.map((v) => (
-            <li class="flex items-start gap-3.5 py-3.5 first:pt-0 last:pb-0">
-              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-mint-brand/15 text-mint-700">
-                <Icon name={v.icon} class="h-5 w-5" />
-              </span>
-              <div class="min-w-0 flex-1">
-                <p class="font-semibold text-ink-900">{v.item}</p>
-                <p class="mt-0.5 text-sm leading-snug text-ink-500">
-                  {v.detail}
-                </p>
-              </div>
-              <span class="shrink-0 pt-1.5 text-sm font-bold text-ink-400">
-                ${v.value}
-              </span>
-            </li>
-          ))
-        }
-      </ul>
-      <p class="mt-4 rounded-xl bg-mint-brand/10 px-4 py-3 text-sm font-bold text-mint-700">
-        ${freePacksValue} of materials, yours whether or not your child joins.
+      <p class="mt-1 text-sm text-ink-500">
+        {freePacks.map((v) => v.item).join(' · ')}
       </p>
-    </div>
-
-    <div class="mt-5 rounded-2xl bg-cream-50 p-6 shadow-sm ring-1 ring-ink-900/5 sm:p-8">
-      <p class="flex items-start gap-2.5 font-display text-lg font-bold text-ink-900">
-        <Icon name="shield" class="mt-0.5 h-5 w-5 shrink-0 text-flame-600" />
-        <span>{guarantee.headline}</span>
+      <p class="mt-4 flex items-center justify-center gap-2 border-t border-cream-300 pt-4 text-sm font-semibold text-ink-700">
+        <Icon name="shield" class="h-4 w-4 shrink-0 text-flame-600" />
+        {guarantee.short}
       </p>
-      <p class="mt-3 leading-relaxed text-ink-700">{guarantee.body}</p>
     </div>
 
     {/* --- What happens next: kills the "then what?" hesitation, placed
