@@ -1,9 +1,14 @@
 @import 'tailwindcss';
 
-/* Self-hosted variable fonts — no third-party request, no flash of a
-   fallback font while a CDN responds, works identically offline. */
+/* Self-hosted variable font — no third-party request, no flash of a
+   fallback font while a CDN responds, works identically offline.
+
+   One family for the whole site, not a serif/sans pairing. This is
+   deliberately closer to how Apple actually types its own pages: headline
+   presence comes from weight and size, not a second typeface. It also
+   sidesteps Fraunces's unusual lowercase f, which read as a rendering bug
+   rather than a design choice at headline size. */
 @import '@fontsource-variable/inter/wght.css';
-@import '@fontsource-variable/fraunces/wght.css';
 
 /* ===========================================================================
    Smart Money Workshop — design tokens
@@ -45,14 +50,13 @@
   --color-mint-700: #2f7d54;
   --color-cocoa: #7a3e12;
 
-  /* Fraunces for headlines — warm and a little characterful, matching the
-     brand's illustrated materials without reading like a Word document.
-     Inter for everything else — the workhorse: crisp at small sizes, a
-     genuinely large weight range, and it self-hosts cleanly. */
-  --font-display: 'Fraunces Variable', 'Iowan Old Style', 'Georgia', serif;
+  /* One family, one system. --font-display exists only so the markup's
+     existing `font-display` utility keeps working — it resolves to the same
+     stack as --font-sans. */
   --font-sans:
     'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-sans);
 }
 
 @layer base {
