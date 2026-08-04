@@ -102,6 +102,10 @@ export const weeks = [
     ],
     outcome:
       'Your child tracks their spending for a week and starts noticing their own daily money habits.',
+    // Short, scannable version for the outcome cards. Same fact as
+    // `outcome` above, just headline-length instead of a full sentence.
+    skill: 'Tracks every dollar',
+    skillDetail: 'A week of writing down where it actually goes.',
     takeaway: 'Weekly spending diary + needs vs. wants sort sheet',
   },
   {
@@ -116,6 +120,8 @@ export const weeks = [
     ],
     outcome:
       'Your child creates their own basic budget and sets a personal savings goal.',
+    skill: 'Builds a real budget',
+    skillDetail: 'Needs, wants and savings, planned their own way.',
     takeaway: 'Budget planner + savings goal tracker',
   },
   {
@@ -130,6 +136,8 @@ export const weeks = [
     ],
     outcome:
       'Your child learns to make smart buying decisions by comparing before they buy.',
+    skill: 'Shops smarter',
+    skillDetail: 'Pause, compare, wait, choose, before every buy.',
     takeaway: 'Smart Spending Challenge pack',
   },
   {
@@ -144,6 +152,8 @@ export const weeks = [
     ],
     outcome:
       'Your child understands what a money habit is, completes a final challenge, and has earned their first bit of money.',
+    skill: 'Earns real money',
+    skillDetail: 'A real challenge, and their first real earnings.',
     takeaway: 'Mini Hustle Challenge pack + reflection journal',
   },
 ];
