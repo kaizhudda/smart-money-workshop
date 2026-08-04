@@ -1,5 +1,6 @@
 ---
 import fs from 'node:fs';
+import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
 import Cta from '../components/Cta.astro';
 import Todo from '../components/Todo.astro';
@@ -22,7 +23,16 @@ const isTodo = (v: unknown) => typeof v === 'string' && v.startsWith('TODO');
 
 // Show the real founder photo the moment the file exists, and keep the
 // placeholder visible until then — so a missing image is never a broken one.
-const photoFile = new URL('../../public/kaiz.jpg', import.meta.url);
+//
+// Resolved from process.cwd(), not import.meta.url: Vite rewrites
+// import.meta.url when it bundles this file for `astro build`, so an
+// import.meta.url-relative path resolves correctly in `astro dev` (where
+// this file runs from its real source location) but silently fails in the
+// production build — which is exactly why the photo never showed up once
+// deployed, even though the file itself was committed and reachable.
+// process.cwd() is the project root in both dev and CI, so it isn't
+// affected by how the bundler relocates the module.
+const photoFile = path.join(process.cwd(), 'public/kaiz.jpg');
 const hasPhoto = fs.existsSync(photoFile);
 
 // Keep the testimonial grid looking deliberate whether there are two quotes
@@ -308,8 +318,7 @@ const savings = isTodo(offer.price)
       It’s already run. Here’s how it went.
     </h2>
     <p class="mt-3 text-ink-500 sm:text-lg">
-      A free pilot cohort of {proof.pilotStudents} students, followed by a first
-      paid cohort of {proof.firstPaidCohortStudents}.
+      {proof.pilotStudents} families have already been through it.
     </p>
 
     <div class={`mt-8 grid gap-4 ${testimonialCols}`}>

@@ -165,8 +165,8 @@ components (`Cta`, the value-stack list, the week cards).
 
 ## Notes on the copy
 
-- Every factual claim on the site is real: 4 sessions, 60 minutes, Zoom,
-  recordings, 5 pilot students, 7 in the first paid cohort, 52 podcast episodes.
+- Every factual claim on the site is real: 4 sessions, 60 minutes, Google
+  Hangouts, recordings, 5 students already through it, 52 podcast episodes.
 - The site has exactly **one** call to action — *Register your child* — on
   purpose. No competing links, no second offer, no newsletter box.
 - Registration is framed as free and **not** a guaranteed spot, which is both

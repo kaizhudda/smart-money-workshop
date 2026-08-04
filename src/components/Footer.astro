@@ -3,8 +3,6 @@ import { site } from '../data/program';
 import { url } from '../lib/url';
 
 const year = new Date().getFullYear();
-// Split so naive scrapers don't lift the address straight out of the HTML.
-const [emailUser, emailDomain] = site.email.split('@');
 ---
 
 <footer class="border-t border-cream-300 bg-cream-200/60">
@@ -18,29 +16,17 @@ const [emailUser, emailDomain] = site.email.split('@');
         </p>
       </div>
 
-      <div class="text-sm">
-        <p class="font-semibold text-ink-900">Questions?</p>
-        <!-- Footer only, deliberately not a call-to-action. Assembled in JS so
-             it isn't sitting in the static HTML for scrapers to harvest. -->
-        <p class="mt-1 text-ink-500">
-          <a
-            class="-mx-1 inline-block px-1 py-2.5 underline decoration-gold-500 decoration-2 underline-offset-4 transition hover:text-flame-600"
-            data-email-user={emailUser}
-            data-email-domain={emailDomain}
-            href="#"
-          >
-            Email {site.founder.split(' ')[0]}
-          </a>
-        </p>
-        <p class="mt-2">
-          <a
-            href={url('/register')}
-            class="-mx-1 inline-block px-1 py-2.5 font-semibold text-flame-600 underline decoration-2 underline-offset-4"
-          >
-            Register your child →
-          </a>
-        </p>
-      </div>
+      {/* Just the one action, same as everywhere else on the site.
+          Registering is how you get in touch — there's no separate email
+          contact path to compete with it. */}
+      <p class="text-sm">
+        <a
+          href={url('/register')}
+          class="-mx-1 inline-block px-1 py-2.5 font-semibold text-flame-600 underline decoration-2 underline-offset-4"
+        >
+          Register your child →
+        </a>
+      </p>
     </div>
 
     <p class="mt-10 border-t border-cream-300 pt-6 text-xs text-ink-400">
@@ -48,12 +34,3 @@ const [emailUser, emailDomain] = site.email.split('@');
     </p>
   </div>
 </footer>
-
-<script>
-  document.querySelectorAll<HTMLAnchorElement>('[data-email-user]').forEach((el) => {
-    const { emailUser, emailDomain } = el.dataset;
-    if (emailUser && emailDomain) {
-      el.href = `mailto:${emailUser}@${emailDomain}`;
-    }
-  });
-</script>

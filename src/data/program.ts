@@ -77,7 +77,6 @@ export const offer = {
 
 export const proof = {
   pilotStudents: 5,
-  firstPaidCohortStudents: 7,
   podcastEpisodes: 52,
   podcastUrl:
     'https://open.spotify.com/episode/7iilwUFS6WHiTBrfKx1cTd?si=BDob92omQkKAZiRoE49I0A',
